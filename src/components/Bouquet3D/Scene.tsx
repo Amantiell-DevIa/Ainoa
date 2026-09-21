@@ -145,9 +145,9 @@ export const Scene: React.FC<SceneProps> = ({
     >
       <Canvas
         camera={{
-          // Cámara con encuadre de seguridad del 45% libre para imposibilitar matemáticamente cualquier recorte
-          position: [0, 0.95, 3.6],
-          fov: 46,
+          // Cámara calibrada para que el ramo luzca grande e imponente sin salirse de los límites
+          position: [0, 0.8, 3.1],
+          fov: 48,
         }}
         dpr={[1, Math.min(window.devicePixelRatio || 1, 1.8)]}
         frameloop={isTabVisible ? "always" : "never"}

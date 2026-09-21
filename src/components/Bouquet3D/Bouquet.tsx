@@ -314,7 +314,7 @@ export const Bouquet: React.FC<BouquetProps> = ({
   });
 
   return (
-    <group ref={bouquetRef} position={[0, -0.17, 0]}>
+    <group ref={bouquetRef} position={[0, -0.23, 0]} scale={1.35}>
       {/* 1. Tallos continuos y conectados */}
       {stemsGeometries.map((geom, idx) => (
         <mesh key={`stem-${idx}`} geometry={geom} material={stemMaterial} />

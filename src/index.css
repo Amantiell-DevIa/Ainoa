@@ -116,8 +116,8 @@ body {
 
 .hero-card {
   width: 100%;
-  max-width: 360px;
-  height: min(46svh, 360px);
+  max-width: 380px;
+  height: min(48svh, 390px);
   position: relative;
   display: flex;
   align-items: center;
