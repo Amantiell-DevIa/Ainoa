@@ -1,0 +1,478 @@
+/* ==========================================================================
+   ESTILOS GENERALES Y SISTEMA DE DISEÑO - PARA AINOA
+   Inspirado en el Día de las Flores Amarillas: Cálido, romántico, minimalista
+   ========================================================================== */
+
+:root {
+  /* Paleta cromática cálida y orgánica */
+  --bg-top: #fef7e8;
+  --bg-mid: #fae1a2;
+  --bg-warm: #f2bd68;
+  --bg-deep: #d67634;
+
+  --text-primary: #331c0e;
+  --text-secondary: #5e3b22;
+  --text-muted: #825737;
+
+  --flower-yellow: #ffd53d;
+  --flower-accent: #f59e0b;
+  --flower-center: #d97706;
+  --leaf-green: #46632b;
+
+  --card-bg: rgba(255, 249, 238, 0.7);
+  --card-border: rgba(140, 75, 25, 0.16);
+  --card-shadow: 0 10px 30px -6px rgba(78, 38, 11, 0.16), 0 4px 12px -2px rgba(78, 38, 11, 0.08);
+
+  /* Tipografías */
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Transiciones suaves */
+  --ease-romantic: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-swap: 650ms;
+}
+
+/* Reset y caja */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  min-height: 100svh;
+  overflow-x: hidden;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  /* Fondo cálido degradado sutil hacia ámbar y terracota */
+  background: radial-gradient(circle at 50% 28%, var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-warm) 75%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor principal centrado, armónico y simétrico */
+.experience-container {
+  width: 100%;
+  max-width: 440px;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top, 16px) + 14px) 20px calc(env(safe-area-inset-bottom, 16px) + 18px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* 1. Encabezado discreto: "Para Ainoa" */
+.app-header {
+  text-align: center;
+  width: 100%;
+  padding-top: 4px;
+  user-select: none;
+}
+
+.app-header h1 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.88;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+/* 2. Zona central protagonista (Hero) */
+.main-stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  justify-content: center;
+  margin: 6px 0;
+}
+
+.hero-card {
+  width: 100%;
+  max-width: 360px;
+  height: min(46svh, 360px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Canvas del Ramo 3D */
+.bouquet-canvas-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+
+.bouquet-canvas-container:active {
+  cursor: grabbing;
+}
+
+/* Indicador sutil de deslizar */
+.swipe-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(254, 247, 232, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  box-shadow: 0 4px 14px rgba(78, 38, 11, 0.1);
+  border: 1px solid rgba(140, 75, 25, 0.12);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  animation: fadeInOutPulse 3s ease-in-out infinite;
+}
+
+@keyframes fadeInOutPulse {
+  0%, 100% { opacity: 0.75; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; transform: translateX(-50%) translateY(-2px); }
+}
+
+/* 3. Dedicatoria y firma - Espacio limpio sin interferencias */
+.dedication-section {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  padding: 10px 16px 4px;
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.dedication-text {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.48;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+}
+
+.signature-text {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.6);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.signature-text::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  right: 25%;
+  height: 1px;
+  background: radial-gradient(circle, var(--text-muted) 0%, transparent 100%);
+  opacity: 0.4;
+}
+
+/* 4. Barra inferior de interacción (Dock) */
+.bottom-dock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  user-select: none;
+}
+
+/* Botón interactivo simétrico y equilibrado */
+.interactive-dock-btn {
+  background: rgba(255, 248, 235, 0.68);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(140, 75, 25, 0.16);
+  box-shadow: 0 8px 24px -4px rgba(78, 38, 11, 0.13), 0 2px 6px -1px rgba(78, 38, 11, 0.06);
+  border-radius: 32px;
+  padding: 6px 18px 6px 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-romantic), background-color 0.25s ease, box-shadow 0.25s ease;
+  outline: none;
+  min-height: 58px;
+}
+
+.interactive-dock-btn:hover {
+  background: rgba(255, 248, 235, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(78, 38, 11, 0.18);
+}
+
+.interactive-dock-btn:focus-visible {
+  box-shadow: 0 0 0 3px var(--text-primary);
+}
+
+/* Marco de la miniatura en el botón inferior */
+.dock-thumbnail-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff9ee;
+  border: 1.5px solid rgba(140, 75, 25, 0.15);
+  box-shadow: 0 2px 8px rgba(78, 38, 11, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dock-thumb-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dock-bouquet-mini {
+  background: radial-gradient(circle, #fffaf0 0%, #fae6be 100%);
+}
+
+.dock-label-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dock-label-text {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+.dock-chevron {
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.interactive-dock-btn:hover .dock-chevron {
+  transform: translateX(2px);
+}
+
+/* Marco de la Foto Grande (Estado Protagonista) */
+.photo-hero-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(255, 253, 247, 0.95) 0%, rgba(250, 235, 205, 0.9) 100%);
+  border: 1px solid rgba(140, 75, 25, 0.15);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  position: relative;
+}
+
+.photo-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(78, 38, 11, 0.08);
+}
+
+/* Placeholder si la foto no existe aún */
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+  border-radius: 16px;
+  border: 2px dashed rgba(140, 75, 25, 0.3);
+  background: rgba(255, 250, 240, 0.6);
+  color: var(--text-secondary);
+}
+
+.photo-placeholder-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--flower-accent);
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.photo-placeholder-text {
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.photo-placeholder-subtext {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.photo-placeholder-subtext code {
+  background: rgba(140, 75, 25, 0.08);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+/* Miniatura de la Foto */
+.mini-photo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.mini-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff9ee;
+}
+
+/* Barra de controles sutiles de accesibilidad */
+.accessibility-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-button {
+  background: rgba(254, 247, 232, 0.6);
+  border: 1px solid rgba(140, 75, 25, 0.12);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.icon-button:hover, .icon-button:focus-visible {
+  background: rgba(254, 247, 232, 0.95);
+  box-shadow: 0 2px 8px rgba(78, 38, 11, 0.15);
+  transform: scale(1.05);
+}
+
+.icon-button:focus-visible {
+  box-shadow: 0 0 0 2px var(--text-primary);
+}
+
+/* Respeto a prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .swipe-hint {
+    animation: none;
+  }
+}
+
+/* Adaptación para pantallas de altura reducida */
+@media (max-height: 680px) {
+  .hero-card {
+    height: 36svh;
+  }
+  .dedication-section {
+    min-height: 90px;
+    padding: 6px 10px 2px;
+  }
+  .dedication-text {
+    font-size: 1.15rem;
+  }
+  .signature-text {
+    font-size: 1.3rem;
+  }
+}
