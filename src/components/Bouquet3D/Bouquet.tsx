@@ -309,7 +309,7 @@ export const Bouquet: React.FC<BouquetProps> = ({
   useFrame((_, delta) => {
     if (!bouquetRef.current) return;
     if (!isInteracting && !isPaused) {
-      bouquetRef.current.rotation.y += autoRotateSpeed * delta;
+      bouquetRef.current.rotation.y += autoRotateSpeed * Math.min(delta, 0.05);
     }
   });
 

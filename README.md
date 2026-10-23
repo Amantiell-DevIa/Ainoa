@@ -1,32 +1,33 @@
-# React + TypeScript + Vite
+# Para Ainoa
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Una dedicatoria pensada para móvil: flores amarillas en 3D, nuestra foto y una carta de amor en una segunda sección turquesa.
 
-Currently, two official plugins are available:
+## Desarrollo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Usa Node.js 22.12 o posterior (también es compatible Node 20.19 o posterior).
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm ci
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+```sh
+npm run build
+npm run lint
+npm run preview
+```
+
+La compilación genera `dist/`. La configuración de Vite utiliza rutas relativas para los recursos compilados.
+
+## Contenido
+
+- La aplicación activa comienza en `src/main.tsx` y `src/App.tsx`.
+- La foto está en `public/images/ainoayyo.jpg`; su configuración y las dedicatorias de las flores están en `src/config/photoConfig.ts`.
+- La carta, su título y la animación de escritura están en `src/components/LoveLetter.tsx`.
+- La acuarela, los adornos y los brillos están en `src/components/LoveLetter.css`.
+
+El enlace «Una carta para ti» lleva a la sección inferior. Al entrar, aparece el título y comienza la escritura. «Leer carta completa» permite mostrar el resto al instante. El control de pausa permite detener y reanudar la escritura y los brillos. El espacio del texto está reservado para evitar saltos mientras se escribe.
+
+La carta y sus adornos se pausan al salir de la sección o al ocultar la pestaña. Con movimiento reducido, el texto se muestra completo y los brillos permanecen quietos. El ramo deja de renderizar mientras queda fuera de pantalla para facilitar la lectura en móvil.
+
+El título «Feliz 1 mes amor» y las referencias a tres meses en la carta se mantienen tal como fueron proporcionados.

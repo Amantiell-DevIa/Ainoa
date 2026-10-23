@@ -68,6 +68,45 @@ body {
   justify-content: center;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.ainoa-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.flower-chapter {
+  background:
+    linear-gradient(180deg, transparent 80%, var(--bg-deep) 100%),
+    radial-gradient(circle at 50% 28%, var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-warm) 75%, var(--bg-deep) 100%);
+}
+
+.letter-invitation {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 24px;
+  transition: background-color 200ms ease;
+}
+
+.letter-invitation:hover {
+  background: rgba(255, 248, 235, 0.5);
+}
+
+.letter-invitation:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
 /* Contenedor principal centrado, armónico y simétrico */
 .experience-container {
   width: 100%;

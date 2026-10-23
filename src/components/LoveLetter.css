@@ -1,0 +1,403 @@
+.love-letter-section {
+  --letter-teal: #224e50;
+  --letter-frame-color: #367778;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: 146px max(14px, env(safe-area-inset-right)) calc(60px + env(safe-area-inset-bottom));
+  overflow: hidden;
+  color: var(--letter-teal);
+  background:
+    linear-gradient(180deg, #d67634 0, #d9bd88 36px, #a5cfc4 87px, transparent 154px),
+    radial-gradient(ellipse at 14% 22%, #d1efdf 0, transparent 42%),
+    radial-gradient(ellipse at 90% 48%, #62b7b5 0, transparent 53%),
+    linear-gradient(155deg, #95d1c4, #75c4bd 47%, #459b9c);
+  scroll-margin-top: 0;
+}
+
+.love-letter-section::before,
+.love-letter-section::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.love-letter-section::before {
+  width: 85%;
+  height: 380px;
+  top: 130px;
+  left: -40%;
+  background: radial-gradient(ellipse, #f9fbeb6b, #def3e81a 56%, transparent 72%);
+  transform: rotate(-30deg);
+}
+
+.love-letter-section::after {
+  width: 90%;
+  height: 500px;
+  bottom: 60px;
+  right: -45%;
+  background: radial-gradient(ellipse, #e3f8ee57, transparent 70%);
+}
+
+.love-letter-heading {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.letter-eyebrow {
+  display: block;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: .23em;
+  text-transform: uppercase;
+  color: #225757;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .8s ease, transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.love-letter-heading h2 {
+  margin: 11px 0 16px;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(43px, 7.8vw, 72px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+  color: #173f42;
+  opacity: 0;
+  transform: translateY(17px);
+  transition: opacity 1.15s ease .18s, transform 1.3s cubic-bezier(.22, 1, .36, 1) .18s;
+}
+
+.love-letter-heading h2 em {
+  font-weight: 400;
+  color: #2a6867;
+}
+
+.letter-heading-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #6a7a51;
+  opacity: 0;
+  transition: opacity 1.2s ease .4s;
+}
+
+.letter-heading-rule span {
+  width: 38px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #54796b80);
+}
+
+.letter-heading-rule span:last-child { transform: rotate(180deg); }
+
+.love-letter-section[data-started="true"] .letter-eyebrow,
+.love-letter-section[data-started="true"] .love-letter-heading h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.love-letter-section[data-started="true"] .letter-heading-rule { opacity: 1; }
+
+.love-letter-paper {
+  position: relative;
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 94px clamp(33px, 7.5vw, 94px) 52px;
+  border: 1px solid #fffdf5ba;
+  border-radius: 5px 8px 6px 9px;
+  background:
+    radial-gradient(ellipse 48% 17% at 85% 1%, #3b98aa70, transparent 93%),
+    radial-gradient(ellipse 78% 20% at 10% 0, #72cdc469, transparent 85%),
+    radial-gradient(ellipse 30% 37% at -4% 42%, #92d4c452, transparent 96%),
+    radial-gradient(ellipse 35% 23% at 105% 71%, #95d3ca5c, transparent 89%),
+    radial-gradient(ellipse 70% 15% at 55% 102%, #6bb8bd80, transparent 98%),
+    #f4f4e9;
+  box-shadow: 0 24px 70px -27px #154d4d5c, 0 2px 6px #1c5e5b0d, inset 0 0 30px #fffff56b;
+}
+
+.love-letter-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: .2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.3' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  background-size: 130px 130px;
+}
+
+.letter-frame {
+  position: absolute;
+  inset: 15px 14px;
+  border: 1px solid #36777845;
+  border-radius: 34px 34px 32px 32px;
+  pointer-events: none;
+}
+
+.letter-frame::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #b5a26952;
+  border-radius: 29px;
+}
+
+.letter-botanical {
+  position: absolute;
+  z-index: 1;
+  width: clamp(76px, 17vw, 160px);
+  height: auto;
+  color: var(--letter-frame-color);
+  opacity: .9;
+  pointer-events: none;
+}
+
+.letter-botanical--top-left { top: 6px; left: 4px; }
+.letter-botanical--top-right { top: 6px; right: 4px; transform: scaleX(-1); }
+.letter-botanical--bottom-left { bottom: 6px; left: 4px; transform: scaleY(-1); }
+.letter-botanical--bottom-right { bottom: 6px; right: 4px; transform: scale(-1); }
+
+.letter-constellation {
+  position: absolute;
+  width: clamp(122px, 30vw, 220px);
+  height: auto;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fffcdf;
+  opacity: .85;
+  pointer-events: none;
+}
+
+.letter-visual-copy { position: relative; z-index: 2; }
+
+.letter-paragraph {
+  margin: 0 0 1.1em;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(20px, 2.8vw, 24px);
+  line-height: 1.46;
+  font-weight: 500;
+  color: var(--letter-teal);
+  text-align: left;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+.letter-salutation {
+  margin-bottom: .8em;
+  font-size: clamp(29px, 4.4vw, 38px);
+  font-style: italic;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.letter-quote-intro { margin-top: 1.6em; margin-bottom: .7em; }
+
+.letter-quotation {
+  position: relative;
+  margin: 0 0 1em;
+  padding: .1em 0 .15em 14px;
+  font-size: clamp(24px, 3.6vw, 31px);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.letter-quotation::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 1px;
+  background: #a4945c80;
+}
+
+.letter-closing {
+  margin-top: 1.4em;
+  margin-bottom: 0;
+  font-style: italic;
+  color: #2a6968;
+}
+
+/* Transparent remaining characters preserve the entire letter's line wrapping
+   and height throughout the writing animation. */
+.letter-unwritten { color: transparent; }
+
+.letter-ink--writing { position: relative; }
+.letter-ink--writing::after {
+  content: "";
+  display: inline;
+  border-right: 1px solid #8c8758;
+  margin-left: -1px;
+  animation: letter-caret 1s steps(2, end) infinite;
+}
+
+.letter-endmark {
+  width: fit-content;
+  margin: 26px auto 0;
+  font-family: Georgia, serif;
+  font-size: 28px;
+  line-height: 1;
+  color: #468281;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.letter-endmark--visible { opacity: 1; transform: translateY(0); }
+
+.letter-reading-controls {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.letter-motion-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #3677784a;
+  border-radius: 50%;
+  background: #f3f6eb8c;
+  color: #285959;
+  cursor: pointer;
+}
+
+.letter-motion-button:focus-visible { outline: 2px solid #285959; outline-offset: 4px; }
+.letter-motion-button:disabled { visibility: hidden; }
+
+.letter-read-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 15px;
+  border: 1px solid #3677784a;
+  border-radius: 30px;
+  background: #f3f6eb8c;
+  color: #285959;
+  cursor: pointer;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .045em;
+  transition: background .25s ease, border-color .25s ease;
+}
+
+.letter-read-button:hover { background: #fffff1d9; border-color: #36777880; }
+.letter-read-button:focus-visible { outline: 2px solid #285959; outline-offset: 4px; }
+.letter-read-button:disabled { visibility: hidden; pointer-events: none; }
+.letter-reading-controls[data-complete="true"] .letter-read-button { position: absolute; }
+.letter-read-button span { font-size: 16px; }
+
+.letter-final-note {
+  position: relative;
+  margin: 28px auto 0;
+  padding: 0 16px;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 18px;
+  font-style: italic;
+  text-align: center;
+  color: #effaf0;
+}
+
+.letter-falling-stars {
+  position: absolute;
+  z-index: 3;
+  inset: 110px 0 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.letter-sparkle {
+  position: absolute;
+  top: -20px;
+  left: var(--sparkle-left);
+  width: var(--sparkle-size);
+  height: var(--sparkle-size);
+  border-radius: 50%;
+  background: #fffce9;
+  opacity: 0;
+  animation: letter-falling-light var(--sparkle-duration) linear var(--sparkle-delay) infinite;
+  animation-play-state: paused;
+  will-change: transform, opacity;
+}
+
+.letter-sparkle:nth-child(3n) { background: #e8d394; }
+.letter-sparkle--cross { border-radius: 0; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+.love-letter-section[data-animated="true"] .letter-sparkle { animation-play-state: running; }
+.love-letter-section[data-animated="false"] .letter-ink--writing::after { animation-play-state: paused; }
+
+.love-letter-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes letter-falling-light {
+  0% { opacity: 0; transform: translate3d(0, 0, 0); }
+  8% { opacity: .65; }
+  76% { opacity: .5; }
+  100% { opacity: 0; transform: translate3d(var(--sparkle-drift), max(1800px, 140svh), 0); }
+}
+
+@keyframes letter-caret { 0%, 45% { opacity: 1; } 46%, 100% { opacity: 0; } }
+
+@media (min-width: 600px) {
+  .love-letter-section { padding-top: 169px; padding-bottom: 80px; }
+  .love-letter-heading { margin-bottom: 42px; }
+  .letter-eyebrow { font-size: 10px; }
+  .love-letter-paper { padding-top: 120px; padding-bottom: 62px; }
+  .letter-constellation { top: 20px; }
+  .letter-frame { inset: 21px; }
+  .letter-botanical--top-left { top: 11px; left: 10px; }
+  .letter-botanical--top-right { top: 11px; right: 10px; }
+  .letter-botanical--bottom-left { bottom: 11px; left: 10px; }
+  .letter-botanical--bottom-right { bottom: 11px; right: 10px; }
+  .letter-reading-controls { margin-top: 24px; }
+  .letter-read-button { font-size: 11px; padding-inline: 19px; }
+  .letter-final-note { margin-top: 32px; font-size: 20px; }
+}
+
+@media (max-width: 370px) {
+  .love-letter-section { padding-inline: 11px; }
+  .love-letter-paper { padding-inline: 31px; }
+  .love-letter-heading h2 { font-size: 40px; }
+  .letter-paragraph { font-size: 20px; line-height: 1.43; }
+  .letter-salutation { font-size: 29px; }
+  .letter-quotation { font-size: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .love-letter-section .letter-sparkle,
+  .love-letter-section .letter-ink--writing::after { display: none; animation: none; }
+  .love-letter-section .letter-eyebrow,
+  .love-letter-section .love-letter-heading h2,
+  .love-letter-section .letter-heading-rule,
+  .love-letter-section .letter-endmark { transition: none; }
+}

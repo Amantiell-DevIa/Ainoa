@@ -19,11 +19,24 @@ export const Scene: React.FC<SceneProps> = ({
   const [isInteracting, setIsInteracting] = useState<boolean>(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(false);
   const [isTabVisible, setIsTabVisible] = useState<boolean>(true);
+  const [isInView, setIsInView] = useState<boolean>(true);
 
+  const containerRef = useRef<HTMLDivElement>(null);
   const controlsRef = useRef<OrbitControlsImpl>(null);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pointerStartPos = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const hasInteractedRef = useRef<boolean>(false);
+
+  // Liberar el render 3D mientras se está leyendo la carta inferior.
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsInView(entry.isIntersecting);
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
 
   // Comprobar soporte WebGL
   useEffect(() => {
@@ -130,10 +143,11 @@ export const Scene: React.FC<SceneProps> = ({
     return <FallbackIllustration />;
   }
 
-  const isPaused = isPausedExternal || prefersReducedMotion || !isTabVisible;
+  const isPaused = isPausedExternal || prefersReducedMotion || !isTabVisible || !isInView;
 
   return (
     <div
+      ref={containerRef}
       className="bouquet-canvas-container"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
@@ -150,7 +164,7 @@ export const Scene: React.FC<SceneProps> = ({
           fov: 48,
         }}
         dpr={[1, Math.min(window.devicePixelRatio || 1, 1.8)]}
-        frameloop={isTabVisible ? "always" : "never"}
+        frameloop={isTabVisible && isInView ? "always" : "never"}
         gl={{
           antialias: true,
           alpha: true,
