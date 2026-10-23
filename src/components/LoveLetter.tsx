@@ -181,7 +181,7 @@ export function LoveLetter() {
 
       <header className="love-letter-heading" ref={headingRef}>
         <span className="letter-eyebrow">Un pedacito de mi corazón</span>
-        <h2 id="love-letter-title">Feliz 1 mes <em>amor</em></h2>
+        <h2 id="love-letter-title">Feliz 3 meses <em>Amor</em></h2>
         <div className="letter-heading-rule" aria-hidden="true"><span />✦<span /></div>
         <div className="letter-reading-controls" data-complete={complete ? "true" : "false"}>
           <button type="button" className="letter-read-button" onClick={finishLetter} disabled={complete} tabIndex={complete ? -1 : 0} aria-hidden={complete ? true : undefined}>

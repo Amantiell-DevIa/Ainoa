@@ -30,4 +30,4 @@ El enlace «Una carta para ti» lleva a la sección inferior. Al entrar, aparece
 
 La carta y sus adornos se pausan al salir de la sección o al ocultar la pestaña. Con movimiento reducido, el texto se muestra completo y los brillos permanecen quietos. El ramo deja de renderizar mientras queda fuera de pantalla para facilitar la lectura en móvil.
 
-El título «Feliz 1 mes amor» y las referencias a tres meses en la carta se mantienen tal como fueron proporcionados.
+El título «Feliz 3 meses Amor» celebra los tres meses mencionados en la carta.
